@@ -1,0 +1,25 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Blank
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  
+  <ion-button expand="block" (click)="getData()">GET DATA</ion-button>
+  <ion-button expand="block" color="danger" (click)="clearCache()">CLEAR CACHE</ion-button>
+  <ion-list>
+    <ion-item *ngFor="let pic of apiData">
+      <ion-thumbnail slot="start">
+        <img-loader [src]=" 'https://picsum.photos/id/' + pic.id + '/100/100' " (load)="onImageLoad($event)" useImg></img-loader>
+      </ion-thumbnail>
+      <ion-label>
+        <h2>Author: {{pic.author}}</h2>
+        <h3>URL: <a [href]="pic.url" target="_blank">{{pic.url}}</a></h3>
+        <p>Width: {{pic.width}}px Height: {{pic.height}}px</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
